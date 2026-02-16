@@ -1,48 +1,59 @@
-# MauiAppEmpleados 
+# MauiAppEmpleados
 
-Una aplicación móvil multiplataforma desarrollada con **.NET MAUI** para la gestión de empleados. Este proyecto demuestra el uso de operaciones CRUD (Crear, Leer, Actualizar y Eliminar) utilizando una arquitectura moderna y patrones de diseño recomendados.
-## Home page
-<img width="1411" height="711" alt="image" src="https://github.com/user-attachments/assets/44812edb-f272-4b31-8038-1908c19e54f0" />
+[![.NET MAUI](https://img.shields.io/badge/.NET%20MAUI-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://learn.microsoft.com/en-us/dotnet/maui/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-## Menú desplegable
-<img width="396" height="635" alt="image" src="https://github.com/user-attachments/assets/30de354b-a039-4524-bb71-567227243937" />
+**MauiAppEmpleados** es una aplicación multiplataforma moderna diseñada para la **gestión de personal**. Este proyecto consume una **API REST** para realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar), demostrando la integración de servicios externos en aplicaciones móviles y de escritorio.
 
-## Departapentos Page
-<img width="1406" height="248" alt="image" src="https://github.com/user-attachments/assets/8121d78f-1cde-4d70-9652-c695178e55c6" />
+---
 
-## Formulario Departamentos
-<img width="1417" height="407" alt="image" src="https://github.com/user-attachments/assets/308bcef8-3e09-4c8c-bedf-3539a3b32ff1" />
+## Capturas de Pantalla
 
-## Empleados Page
-<img width="1411" height="420" alt="image" src="https://github.com/user-attachments/assets/29490350-e635-415a-8e94-f44867bb8a75" />
+| Home Page | Menú Desplegable |
+|---|---|
+| <img src="https://github.com/user-attachments/assets/44812edb-f272-4b31-8038-1908c19e54f0" width="450"> | <img src="https://github.com/user-attachments/assets/30de354b-a039-4524-bb71-567227243937" width="220"> |
 
-## Formulario Empleados
-<img width="1407" height="711" alt="image" src="https://github.com/user-attachments/assets/22a3c4c1-0eea-4fb6-91c7-7d8b62107f7d" />
+| Departamentos | Empleados | Configuración |
+|---|---|---|
+| <img src="https://github.com/user-attachments/assets/8121d78f-1cde-4d70-9652-c695178e55c6" width="280"> | <img src="https://github.com/user-attachments/assets/29490350-e635-415a-8e94-f44867bb8a75" width="280"> | <img src="https://github.com/user-attachments/assets/1e188604-a5f2-4684-9eef-ac46920781f3" width="280"> |
 
-## Settings Page
-<img width="1407" height="541" alt="image" src="https://github.com/user-attachments/assets/1e188604-a5f2-4684-9eef-ac46920781f3" />
+---
 
-## Características
+## Características Principales
 
-- **Gestión de Empleados:** Registro, edición, visualización y eliminación de personal.
-- **Interfaz Moderna:** Diseño adaptable y optimizado para dispositivos móviles (Android/iOS) y escritorio (Windows/macOS).
-- **Patrón MVVM:** Separación limpia de la lógica de negocio y la interfaz de usuario.
+* **Gestión de Empleados:** Registro completo, edición de perfiles y visualización de listas desde el servidor.
+* **Gestión de Departamentos:** Organización por áreas mediante formularios dinámicos.
+* **Consumo de API REST:** Sincronización de datos en tiempo real con un servicio backend.
+* **Interfaz Adaptable:** Experiencia de usuario optimizada para Android, iOS y Windows.
+* **Arquitectura Robusta:** Uso estricto del patrón MVVM para facilitar el mantenimiento.
 
-## Tecnologías Utilizadas
+---
 
-- **[.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/):** Framework para aplicaciones nativas multiplataforma.
-- **C# / XAML:** Lenguaje de programación y marcado.
-- **CommunityToolkit.Mvvm:** Para simplificar la implementación del patrón Model-View-ViewModel.
-- **SQLite-net-pcl:** (Si aplica) Para el manejo de la base de datos local.
+## Tecnologías y Librerías
 
-## Requisitos Previos
+* **Framework:** [.NET MAUI](https://learn.microsoft.com/en-us/dotnet/maui/) (.NET 8.0).
+* **Patrón de Diseño:** **MVVM** (Model-View-ViewModel).
+* **Comunicación:** `HttpClient` para el consumo de servicios web JSON.
+* **Librerías Clave:**
+    * **CommunityToolkit.Mvvm:** Para el manejo de comandos y observabilidad.
+    * **Newtonsoft.Json / System.Text.Json:** Procesamiento de datos recibidos de la API.
+    * **MAUI Community Toolkit:** Diálogos, validaciones y elementos visuales.
 
-Antes de ejecutar la aplicación, asegúrate de tener instalado:
+---
 
-- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) (versión 17.3 o superior) con la carga de trabajo de **Desarrollo de interfaz de usuario de aplicaciones multiplataforma de .NET**.
-- SDK de .NET 7.0 o 8.0 (según la versión del proyecto).
+## Estructura del Proyecto
 
-## 💻 Instalación y Ejecución
+```text
+MauiAppEmpleados/
+├── Models/         # Clases que representan los objetos de la API (Empleado, Departamento).
+├── ViewModels/     # Lógica de negocio y manejo de estados de la UI.
+├── Views/          # Archivos XAML (Páginas y componentes visuales).
+├── Services/       # Servicios de comunicación con la API (Lógica de red).
+├── Resources/      # Recursos multimedia, fuentes y estilos globales.
+└── AppShell.xaml   # Configuración de la navegación principal.
+```
+
+## Instalación y Ejecución
 
 1. **Clonar el repositorio:**
    ```bash
