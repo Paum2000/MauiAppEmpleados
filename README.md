@@ -71,17 +71,6 @@ MauiAppEmpleados/
 
 ---
 
-## Estructura del Proyecto
-
-El proyecto está organizado siguiendo las mejores prácticas de separación de responsabilidades:
-
-* **Models:** Contiene las clases de datos y entidades de negocio (ej. `Empleado.cs`).
-* **ViewModels:** Contiene la lógica de la interfaz de usuario y los comandos que vinculan la Vista con los Modelos.
-* **Views:** Archivos XAML que definen la interfaz visual y la experiencia del usuario.
-* **Services:** Lógica encargada del acceso a datos, persistencia local (SQLite) o consumo de APIs externas.
-
----
-
 ## Licencia
 
 Este proyecto está bajo la licencia **MIT**.
