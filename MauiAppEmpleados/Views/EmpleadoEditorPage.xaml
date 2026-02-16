@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppEmpleados.Views.EmpleadoEditorPage"
+             Title="{Binding Title}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <Label Text="Nombre del Empleado" FontAttributes="Bold"/>
+            <Entry Text="{Binding Empleado.Name}" Placeholder="Ej: Juan Pérez"/>
+
+            <Label Text="Puesto / Descripción" FontAttributes="Bold"/>
+            <Entry Text="{Binding Empleado.Description}" Placeholder="Ej: Gerente de Ventas"/>
+
+            <Label Text="URL de Imagen (Opcional)" FontAttributes="Bold"/>
+            <Entry Text="{Binding Empleado.ImageUri}" Placeholder="http://..."/>
+
+            <Label Text="ID Departamento" FontAttributes="Bold"/>
+            <Entry Text="{Binding Empleado.DepartmentId}" Keyboard="Numeric" Placeholder="Ej: 1"/>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,20,0,0">
+                <Button Grid.Column="0" Text="Cancelar" Command="{Binding CancelCommand}" BackgroundColor="Gray"/>
+                <Button Grid.Column="1" Text="Guardar" Command="{Binding SaveCommand}" BackgroundColor="#0078D4"/>
+            </Grid>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

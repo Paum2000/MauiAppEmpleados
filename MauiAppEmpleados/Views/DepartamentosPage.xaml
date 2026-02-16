@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiAppEmpleados.ViewModels"
+             x:Class="MauiAppEmpleados.Views.DepartamentosPage"
+             xmlns:model="clr-namespace:MauiAppEmpleados.Models"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Nuevo (+)" Command="{Binding GoToCreateCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <CollectionView ItemsSource="{Binding Departamentos}" Margin="15">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Departamento">
+                    <Frame CornerRadius="8" Padding="15" HasShadow="True" BorderColor="#107C10" Margin="0,5">
+                        <Grid ColumnDefinitions="50, *, Auto">
+
+                            <Image Grid.Column="0" Source="department_icon.png" 
+                   WidthRequest="40" HeightRequest="40" 
+                   VerticalOptions="Center"/>
+
+                            <StackLayout Grid.Column="1" VerticalOptions="Center" Margin="10,0">
+                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" TextColor="#333"/>
+                                <Label Text="{Binding Id, StringFormat='ID: {0}'}" FontSize="12" TextColor="Gray"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalOptions="Center">
+
+                                <Button Text="Editar" 
+                        FontSize="12" 
+                        HeightRequest="35"
+                        Padding="10,0"
+                        BackgroundColor="Orange"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DepartamentosViewModel}}, Path=GoToEditCommand}"
+                        CommandParameter="{Binding .}"/>
+
+                                <Button Text="Borrar" 
+                        FontSize="12" 
+                        HeightRequest="35" 
+                        Padding="10,0"
+                        BackgroundColor="Red"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DepartamentosViewModel}}, Path=DeleteCommand}"
+                        CommandParameter="{Binding .}"/>
+                            </StackLayout>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="No hay departamentos" TextColor="Gray"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+        </CollectionView>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" 
+                           HorizontalOptions="Center" VerticalOptions="Center" Color="Green"/>
+    </Grid>
+</ContentPage>

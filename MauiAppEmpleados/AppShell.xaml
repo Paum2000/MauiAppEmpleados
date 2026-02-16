@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MauiAppEmpleados.Views"
+    x:Class="MauiAppEmpleados.AppShell"
+    Title="Gestión de Empleados"
+    Shell.NavBarIsVisible="True">
+
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="{StaticResource Primary}" HeightRequest="160" Padding="20">
+            <VerticalStackLayout VerticalOptions="End">
+                <Image Source="dotnet_bot.png" 
+                       HeightRequest="60" WidthRequest="60" 
+                       HorizontalOptions="Start"
+                       Margin="0,0,0,10"/>
+                <Label Text="Admin Panel" 
+                       TextColor="White" 
+                       FontAttributes="Bold" 
+                       FontSize="20"/>
+                <Label Text="admin@empresa.com" 
+                       TextColor="#E0E0E0" 
+                       FontSize="12"/>
+            </VerticalStackLayout>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Inicio" Icon="home.png">
+        <ShellContent ContentTemplate="{DataTemplate views:HomePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Departamentos" Icon="department.png">
+        <ShellContent ContentTemplate="{DataTemplate views:DepartamentosPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Empleados" Icon="employee.png">
+        <ShellContent ContentTemplate="{DataTemplate views:EmpleadosPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Configuración" Icon="settings.png">
+        <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" />
+    </FlyoutItem>
+</Shell>

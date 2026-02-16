@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiAppEmpleados.ViewModels"
+             x:Class="MauiAppEmpleados.Views.EmpleadosPage"
+             xmlns:model="clr-namespace:MauiAppEmpleados.Models"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Nuevo (+)" Command="{Binding GoToCreateCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto, *">
+        <SearchBar Grid.Row="0" Placeholder="Buscar por ID..."
+                   SearchCommand="{Binding SearchByIdCommand}"
+                   SearchCommandParameter="{Binding Text, Source={RelativeSource Self}}"/>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Empleados}" Margin="10">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Empleado">
+                    <Frame CornerRadius="10" HasShadow="True" Padding="10" Margin="0,5">
+                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="60, *">
+
+                            <Image Grid.Row="0" Grid.Column="0" Source="{Binding FullImageUrl}" 
+                   Aspect="AspectFill" HeightRequest="60" WidthRequest="60">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="30,30" RadiusX="30" RadiusY="30" />
+                                </Image.Clip>
+                            </Image>
+
+                            <StackLayout Grid.Row="0" Grid.Column="1" Margin="10,0,0,0">
+                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding Description}" TextColor="Gray"/>
+                                <Label Text="{Binding DepartmentId, StringFormat='Departamento ID: {0}'}" FontSize="12" TextColor="Purple"/>
+                                <Label Text="{Binding Id, StringFormat='ID: {0}'}" FontSize="12" TextColor="Gray"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                         Orientation="Horizontal" HorizontalOptions="End" Spacing="10" Margin="0,10,0,0">
+
+                                <Button Text="Editar" HeightRequest="35" FontSize="12" BackgroundColor="Orange"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:EmpleadosViewModel}}, Path=GoToEditCommand}"
+                        CommandParameter="{Binding .}"/>
+
+                                <Button Text="Borrar" HeightRequest="35" FontSize="12" BackgroundColor="Red"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:EmpleadosViewModel}}, Path=DeleteCommand}"
+                        CommandParameter="{Binding .}"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator Grid.Row="1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" 
+                           HorizontalOptions="Center" VerticalOptions="Center" Color="Blue"/>
+    </Grid>
+</ContentPage>
